@@ -7,12 +7,37 @@ public class Car {
     String country;
 
     Car(String brand, String model, int year, String country, String color, float engineVolume) {
-        this.brand = brand;
-        this.model = model;
-        this.productionYear = year;
-        this.country = country;
-        this.color = color;
-        this.engineVolume = engineVolume;
+        this();
+        if (brand == null) {
+            System.out.println("Default");
+        } else {
+            this.brand = brand;
+        }
+        if (model == null) {
+            System.out.println("Default");
+        } else {
+            this.model = model;
+        }
+        if (productionYear <= 0) {
+            this.productionYear = 2000;
+        } else {
+            this.productionYear = year;
+        }
+        if (country == null) {
+            System.out.println("Default");
+        } else {
+            this.country = country;
+        }
+        if (color == null) {
+            this.color = "Белый";
+        } else {
+            this.color = color;
+        }
+        if (engineVolume == 0) {
+            this.engineVolume = 1.5f;
+        } else {
+            this.engineVolume = engineVolume;
+        }
     }
 
     Car() {
