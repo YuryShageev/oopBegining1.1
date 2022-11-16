@@ -41,12 +41,12 @@ public class Car {
     }
 
     Car() {
-        brand = "Гнилая";
-        model = "тачанка";
-        productionYear = 1960;
-        country = "Черти где";
-        color = "Такой же как красный, только синий";
-        engineVolume = 1.1f;
+        brand = "Default";
+        model = "Default";
+        productionYear = 2000;
+        country = "Default";
+        color = "Белый";
+        engineVolume = 1.5f;
     }
 
     void introduceCar() {

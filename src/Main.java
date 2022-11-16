@@ -3,12 +3,12 @@ public class Main {
     public static void main(String[] args) {
         Car car = new Car();
 //        car.country = "Чёрти где";
-        car.color = "Вроде бы красный, но больше зелёный";
-        car.brand = "Тачанка";
-        car.model = "На болтах";
+//        car.color = "Вроде бы красный, но больше зелёный";
+//        car.brand = "Тачанка";
+//        car.model = "На болтах";
 //        car.productionYear = 1999;
-        car.engineVolume = 0.5f;
-        car.introduceCar();
+//        car.engineVolume = 0.5f;
+        System.out.println(car);
 
         Car car1 = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германия", " чёрного", 3.0f);
         System.out.println(car1);
