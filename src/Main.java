@@ -10,7 +10,7 @@ public class Main {
 //        car.engineVolume = 0.5f;
         System.out.println(car);
 
-        Car car1 = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германия", " чёрного", 3.0f);
+        Car car1 = new Car("Audi", "A8 50 L TDI quattro", -2020, "Германия", " чёрного", 3.0f);
         System.out.println(car1);
         Car car2 = new Car("BMW", "Z8", 2021, "Германия", " чёрного", 3.0f);
         System.out.println(car2);
