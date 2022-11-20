@@ -19,7 +19,7 @@ public class Car {
 
     public Car(String brand, String model, int year, String country, String color, float engineVolume, String transmission, String body,
                String licenseNumber, String tyreType, int numberOfSeats) {
-//        this();
+
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
             System.out.println("Механическая");
         }else {
@@ -62,19 +62,16 @@ public class Car {
         this.productionYear = validateYear(year);
 
 
-        if (country == null) {
-            System.out.println("Default");
-        } else {
-            this.country = country;
-        }
+        this.country = validateString(country, "Россия");
 
-        if (color == null) {
-            this.color = "Белый";
+
+        if (color == null || color.isEmpty() || color.isBlank()) {
+            this.color = "Белого";
         } else {
             this.color = color;
         }
 
-        if (engineVolume == 0) {
+        if (engineVolume <= 0) {
             this.engineVolume = 1.5f;
         } else {
             this.engineVolume = engineVolume;
@@ -205,5 +202,9 @@ public class Car {
             System.out.println("Номер не корректный");
             return "Неверный номер";
         }
+    }
+
+    public static String validateString(String value, String substitution) {
+        return (value == null || value.isBlank() || value.isEmpty()) ? substitution : value;
     }
 }

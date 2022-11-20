@@ -14,6 +14,9 @@ public class Main {
 //        car.setEngineVolume(0);
 //        System.out.println(car);
 
+        Car car = new Car("Lada", "Granta", 2000, "", "", 0, "", "", "",
+                "Летняя", 5);
+        System.out.println(car);
         Car car1 = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германия", " чёрного",
                 3.0f, "Автомат", "Хэчбек", "т829ип123", "Зимняя", 5);
         System.out.println(car1);
