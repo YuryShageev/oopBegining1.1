@@ -13,120 +13,7 @@ public class Car {
     private int numberOfSeats;
     private String tyreType;
 
-    public String getBrand() {
-        return brand;
-    }
 
-    public String getModel() {
-        return model;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public float getEngineVolume() {
-        return engineVolume;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setProductionYear(int productionYear) {
-        if (productionYear == 0) {
-            this.productionYear = 2000;
-        } else {
-
-            this.productionYear = productionYear;
-        }
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
-    }
-
-    public void setEngineVolume(float engineVolume) {
-        if (engineVolume == 0) {
-            this.engineVolume = 1.5f;
-        } else if (engineVolume < 0) {
-            this.engineVolume = Math.abs(engineVolume);
-        } else {
-            this.engineVolume = engineVolume;
-        }
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        if (color == null || color.isEmpty() || color.isBlank()) {
-            this.color = "Белый";
-        } else {
-            this.color = color;
-        }
-    }
-
-    public String getTransmission() {
-        return transmission;
-    }
-
-    public void setTransmission(String transmission) {
-        if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
-            System.out.println("Механическая");
-        } else {
-            this.transmission = transmission;
-        }
-    }
-
-    public String getLicenseNumber() {
-        return licenseNumber;
-    }
-
-    public void setLicenseNumber(String licenseNumber) {
-        if (licenseNumber == null || licenseNumber.isEmpty() || licenseNumber.isBlank()) {
-            System.out.println("Данные не указаны");
-        } else {
-            this.licenseNumber = licenseNumber;
-        }
-    }
-
-    public String getTyreType() {
-        return tyreType;
-    }
-
-    public void setTyreType(String tyreType) {
-        if (tyreType == null || tyreType.isBlank() || tyreType.isEmpty()) {
-            System.out.println("Данные не указаны");
-        } else {
-            this.tyreType = tyreType;
-        }
-    }
 
     public Car(String brand, String model, int year, String country, String color, float engineVolume, String transmission, String body,
                String licenseNumber, String tyreType, int numberOfSeats) {
@@ -137,11 +24,9 @@ public class Car {
             this.transmission = transmission;
         }
 
-        if (body == null || body.isEmpty() || body.isBlank()) {
-            System.out.println("Седан");
-        }else {
-            this.body = body;
-        }
+
+        this.body = validateParameters(body);
+
 
         if (licenseNumber == null || licenseNumber.isBlank() || licenseNumber.isEmpty()) {
             System.out.println("x000xx000");
@@ -221,5 +106,100 @@ public class Car {
         return getBrand() + " " + getModel() + ", " + getProductionYear() + " года выпуска, сборка в стране " + getCountry() + ", " + getColor()
                 + " цвета, объем двигателя - " + getEngineVolume() + "л. Трансмиссия - " + getTransmission() + " Тип кузова - " + getBody() + " Гос. Номер - "
                 + getLicenseNumber() + " Тип ризины - " + getTyreType() + " Количество мест - " + getNumberOfSeats();
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getProductionYear() {
+        return productionYear;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public float getEngineVolume() {
+        return engineVolume;
+    }
+
+
+
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public void setEngineVolume(float engineVolume) {
+        if (engineVolume == 0) {
+            this.engineVolume = 1.5f;
+        } else if (engineVolume < 0) {
+            this.engineVolume = Math.abs(engineVolume);
+        } else {
+            this.engineVolume = engineVolume;
+        }
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+
+    public String getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(String transmission) {
+        if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
+            System.out.println("Механическая");
+        } else {
+            this.transmission = transmission;
+        }
+    }
+
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        if (licenseNumber == null || licenseNumber.isEmpty() || licenseNumber.isBlank()) {
+            System.out.println("Данные не указаны");
+        } else {
+            this.licenseNumber = licenseNumber;
+        }
+    }
+
+    public String getTyreType() {
+        return tyreType;
+    }
+
+    public void setTyreType(String tyreType) {
+        if (tyreType == null || tyreType.isBlank() || tyreType.isEmpty()) {
+            System.out.println("Данные не указаны");
+        } else {
+            this.tyreType = tyreType;
+        }
+    }
+
+    public static String validateParameters(String value) {
+        return value == null || value.isEmpty() || value.isBlank() ? "Информация не указана" : value;
     }
 }

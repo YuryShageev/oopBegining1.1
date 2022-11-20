@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
         Car car = new Car();
         car.setCountry("Россия");
-        car.setColor("");
-        car.setBrand("Lada");
-        car.setModel("Granta");
-        car.setProductionYear(0);
+        car.getColor();
+        car.getBrand();
+        car.getModel();
+        car.getProductionYear();
         car.setEngineVolume(0);
         System.out.println(car);
 
