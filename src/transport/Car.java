@@ -29,10 +29,8 @@ public class Car {
         }else {
             this.transmission = transmission;
         }
-
         this.body = validateParameters(body);
         this.licenseNumber = validateLicensePlate(licenseNumber);
-
         if (tyreType == null || tyreType.isEmpty() || tyreType.isBlank()) {
             System.out.println("Летняя");
         } else {
@@ -53,12 +51,8 @@ public class Car {
         } else {
             this.model = model;
         }
-
-
         this.productionYear = validateYear(year);
         this.country = validateCountry(country, "Россия");
-
-
         if (color == null || color.isEmpty() || color.isBlank()) {
             this.color = "Белого";
         } else {

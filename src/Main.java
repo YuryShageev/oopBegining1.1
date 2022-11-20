@@ -29,10 +29,10 @@ public class Main {
         System.out.println(car3);
         Car car4 = new Car("Hyundai", "Avante", 2016, "Южная Корея", "оранжевого", 1.6f, "ММТ",
                 "Лифтбэк", "т567ип011", "Зимняя", 5);
-        Car.Key hyundaiKey = car4.new Key(true, true);
-        Car.Insurance hyundaiInsurance = car4.new Insurance(LocalDate.of(2023, 9, 6), -300, "123456789");
-        car4.setKey(hyundaiKey);
-        car4.setInsurance(hyundaiInsurance);
+        Car.Key car4Key = car4.new Key(true, true);
+        Car.Insurance car4Insurance = car4.new Insurance(LocalDate.of(2023, 9, 6), -300, "123456789");
+        car4.setKey(car4Key);
+        car4.setInsurance(car4Insurance);
         System.out.println(car4);
     }
 }
