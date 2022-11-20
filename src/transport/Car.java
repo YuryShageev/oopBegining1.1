@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.regex.Pattern;
+
 public class Car {
     private String brand;
     private String model;
@@ -17,7 +19,7 @@ public class Car {
 
     public Car(String brand, String model, int year, String country, String color, float engineVolume, String transmission, String body,
                String licenseNumber, String tyreType, int numberOfSeats) {
-        this();
+//        this();
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
             System.out.println("Механическая");
         }else {
@@ -28,11 +30,9 @@ public class Car {
         this.body = validateParameters(body);
 
 
-        if (licenseNumber == null || licenseNumber.isBlank() || licenseNumber.isEmpty()) {
-            System.out.println("x000xx000");
-        } else {
-            this.licenseNumber = licenseNumber;
-        }
+
+        this.licenseNumber = validateLicensePlate(licenseNumber);
+
 
         if (tyreType == null || tyreType.isEmpty() || tyreType.isBlank()) {
             System.out.println("Летняя");
@@ -58,11 +58,9 @@ public class Car {
             this.model = model;
         }
 
-        if (productionYear <= 0) {
-            this.productionYear = 2000;
-        } else {
-            this.productionYear = year;
-        }
+
+        this.productionYear = validateYear(year);
+
 
         if (country == null) {
             System.out.println("Default");
@@ -83,14 +81,7 @@ public class Car {
         }
     }
 
-    public Car() {
-        brand = "Lada";
-        model = "Granta";
-        productionYear = 2000;
-        country = "Россия";
-        color = "Белый";
-        engineVolume = 1.5f;
-    }
+//
 
     public void introduceCar() {
         System.out.println("Бренд " + brand);
@@ -198,8 +189,21 @@ public class Car {
             this.tyreType = tyreType;
         }
     }
-
+//Валидации
     public static String validateParameters(String value) {
         return value == null || value.isEmpty() || value.isBlank() ? "Информация не указана" : value;
+    }
+
+    public static Integer validateYear(Integer value) {
+        return value == null || value < 0 ? 2000 : value;
+    }
+
+    public static String validateLicensePlate(String licenseNumber) {
+        if (Pattern.matches("[а-я][0-9]{3}[а-я]{2}[0-9]{3}", licenseNumber)) {
+            return licenseNumber;
+        } else {
+            System.out.println("Номер не корректный");
+            return "Неверный номер";
+        }
     }
 }
