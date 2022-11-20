@@ -41,9 +41,38 @@ public class Car {
         return engineVolume;
     }
 
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setProductionYear(int productionYear) {
+        if (productionYear == 0) {
+            this.productionYear = 2000;
+        } else {
+
+            this.productionYear = productionYear;
+        }
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
     public void setEngineVolume(float engineVolume) {
         if (engineVolume == 0) {
-            System.out.println("Данные не указаны");
+            this.engineVolume = 1.5f;
         } else if (engineVolume < 0) {
             this.engineVolume = Math.abs(engineVolume);
         } else {
@@ -57,7 +86,7 @@ public class Car {
 
     public void setColor(String color) {
         if (color == null || color.isEmpty() || color.isBlank()) {
-            System.out.println("Белый");
+            this.color = "Белый";
         } else {
             this.color = color;
         }

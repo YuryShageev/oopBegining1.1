@@ -6,12 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
         Car car = new Car();
-        car.getCountry();
-        car.getColor();
-        car.getBrand();
-        car.getModel();
-        car.getProductionYear();
-        car.getEngineVolume();
+        car.setCountry("Россия");
+        car.setColor("");
+        car.setBrand("Lada");
+        car.setModel("Granta");
+        car.setProductionYear(0);
+        car.setEngineVolume(0);
         System.out.println(car);
 
         Car car1 = new Car("Audi", "A8 50 L TDI quattro", -2020, "Германия", " чёрного",
