@@ -1,19 +1,23 @@
 package transport;
 
+import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 public class Car {
     private String brand;
     private String model;
     private float engineVolume;
-    private String color;
-    private int productionYear;
+    private final String color;
+    private final int productionYear;
     private String country;
     private String transmission;
-    private String body;
+    private final String body;
     private String licenseNumber;
     private int numberOfSeats;
     private String tyreType;
+    private Key key;
+    private Insurance insurance;
+
 
 
 
@@ -26,13 +30,8 @@ public class Car {
             this.transmission = transmission;
         }
 
-
         this.body = validateParameters(body);
-
-
-
         this.licenseNumber = validateLicensePlate(licenseNumber);
-
 
         if (tyreType == null || tyreType.isEmpty() || tyreType.isBlank()) {
             System.out.println("Летняя");
@@ -44,14 +43,11 @@ public class Car {
         } else {
             this.numberOfSeats = numberOfSeats;
         }
-
-
         if (brand == null) {
             System.out.println("Default");
         } else {
             this.brand = brand;
         }
-
         if (model == null) {
             System.out.println("Default");
         } else {
@@ -60,9 +56,7 @@ public class Car {
 
 
         this.productionYear = validateYear(year);
-
-
-        this.country = validateString(country, "Россия");
+        this.country = validateCountry(country, "Россия");
 
 
         if (color == null || color.isEmpty() || color.isBlank()) {
@@ -186,7 +180,24 @@ public class Car {
             this.tyreType = tyreType;
         }
     }
-//Валидации
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
+    //Валидации
     public static String validateParameters(String value) {
         return value == null || value.isEmpty() || value.isBlank() ? "Информация не указана" : value;
     }
@@ -203,7 +214,73 @@ public class Car {
         }
     }
 
-    public static String validateString(String value, String substitution) {
+    public static String validateCountry(String value, String substitution) {
         return (value == null || value.isBlank() || value.isEmpty()) ? substitution : value;
+    }
+
+
+    public class Key {
+        private final Boolean remoteStart;
+        private final Boolean keyLessAccess;
+
+        public Key(Boolean remoteStart, Boolean keyLessAccess) {
+            this.remoteStart = validateBoolean(remoteStart);
+            this.keyLessAccess = validateBoolean(keyLessAccess);
+        }
+
+        @Override
+        public String toString() {
+            return "Key{" +
+                    "remoteStart=" + remoteStart +
+                    ", keyLessAccess=" + keyLessAccess +
+                    '}';
+        }
+
+        public Boolean validateBoolean(Boolean value) {
+            return value == null ? false : value;
+        }
+    }
+
+    public class Insurance {
+        private final LocalDate duration;
+        private final Double cost;
+        private final String number;
+
+        public Insurance(LocalDate duration, double cost, String number) {
+            this.duration = duration;
+            this.cost = validateCost(cost);
+            this.number = validateSerialNumber(number) ? number : "Invalid Number";
+        }
+
+        public double validateCost(double value) {
+            return value <= 0 ? 1000 : value;
+        }
+
+        private boolean validateSerialNumber(String number) {
+            if (Pattern.matches("[а-яА-Яa-zA-Z0-9]{9}", number)) {
+                return true;
+            } else {
+                System.out.println("Wrong Number");
+                return false;
+            }
+        }
+
+        public LocalDate checkDuration(LocalDate duration) {
+            if (LocalDate.now().isAfter(duration)) {
+                System.out.println("Страховка просрочена");
+                return LocalDate.now();
+            } else {
+                return duration;
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "Insurance{" +
+                    "duration=" + duration +
+                    ", cost=" + cost +
+                    ", number='" + number + '\'' +
+                    '}';
+        }
     }
 }
