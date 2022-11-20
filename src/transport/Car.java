@@ -21,7 +21,7 @@ public class Car {
                String licenseNumber, String tyreType, int numberOfSeats) {
 
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
-            System.out.println("Механическая");
+            this.transmission = "Механическая";
         }else {
             this.transmission = transmission;
         }
@@ -199,7 +199,6 @@ public class Car {
         if (Pattern.matches("[а-я][0-9]{3}[а-я]{2}[0-9]{3}", licenseNumber)) {
             return licenseNumber;
         } else {
-            System.out.println("Номер не корректный");
             return "Неверный номер";
         }
     }
