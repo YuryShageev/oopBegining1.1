@@ -79,10 +79,18 @@ public class Transport {
         } else {
             this.productionYear = productionYear;
         }
-        this.country = country;
-        this.color = color;
+        this.country = validateParameters(country);
+        this.color = validateParameters(color);
         this.maxMovementSpeed = maxMovementSpeed;
     }
 
-
+    @Override
+    public String toString() {
+        return " Марка " + brand +
+                ", Модель " + model +
+                ", Год выпуска " + productionYear +
+                ", Страна-производитель " + country +
+                ", Цвет " + color +
+                ", Максимальная скорость передвижения " + maxMovementSpeed;
+    }
 }

@@ -1,4 +1,6 @@
 import transport.Car;
+import transport.Train;
+import transport.Transport;
 
 import java.time.LocalDate;
 
@@ -34,5 +36,15 @@ public class Main {
         car4.setKey(car4Key);
         car4.setInsurance(car4Insurance);
         System.out.println(car4);
+
+        System.out.println();
+        Train train1 = new Train("Ласточка", "В-901", 2011, "Россия",
+                "", 301, 11, "Белорусский вокзал",
+                "Минск-Пассажирский", 3500, 0);
+        System.out.println(train1);
+
+        Train train2 = new Train("Ленинград", "D-125", 2019, "Россия",
+                "", 270, 8, "Ленинградский вокзал", "Ленинград-Пассажирский", 1700, 0);
+        System.out.println(train2);
     }
 }
