@@ -86,11 +86,11 @@ public class Transport {
 
     @Override
     public String toString() {
-        return " Марка " + brand +
-                ", Модель " + model +
-                ", Год выпуска " + productionYear +
-                ", Страна-производитель " + country +
-                ", Цвет " + color +
-                ", Максимальная скорость передвижения " + maxMovementSpeed;
+        return " Марка " + getBrand() +
+                ", Модель " + getModel() +
+                ", Год выпуска " + getProductionYear() +
+                ", Страна-производитель " + getCountry() +
+                ", Цвет " + getColor() +
+                ", Максимальная скорость передвижения " + getMaxMovementSpeed();
     }
 }
