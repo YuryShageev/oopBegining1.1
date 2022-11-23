@@ -1,6 +1,7 @@
+import transport.Bus;
 import transport.Car;
 import transport.Train;
-import transport.Transport;
+
 
 import java.time.LocalDate;
 
@@ -46,5 +47,14 @@ public class Main {
         Train train2 = new Train("Ленинград", "D-125", 2019, "Россия",
                 "", 270, 8, "Ленинградский вокзал", "Ленинград-Пассажирский", 1700, 0);
         System.out.println(train2);
+
+        System.out.println();
+
+        Bus bus1 = new Bus("Икарус", "Очень старый", 1976, "Россия", "Красный", 86);
+        System.out.println(bus1);
+        Bus bus2 = new Bus("ПАЗ", "Б-2152", 2002, "Россия", "Белый", 102);
+        System.out.println(bus2);
+        Bus bus3 = new Bus("МАЗ", "Д-816", 2009, "Беларусь", "Чёрный", 127);
+        System.out.println(bus3);
     }
 }

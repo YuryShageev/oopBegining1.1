@@ -91,6 +91,6 @@ public class Transport {
                 ", Год выпуска " + getProductionYear() +
                 ", Страна-производитель " + getCountry() +
                 ", Цвет " + getColor() +
-                ", Максимальная скорость передвижения " + getMaxMovementSpeed();
+                ", Максимальная скорость передвижения " + getMaxMovementSpeed() + " км/ч ";
     }
 }
