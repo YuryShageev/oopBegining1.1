@@ -22,7 +22,7 @@ public class Car extends Transport {
     public Car(String brand, String model, int year, String country, String color, float maxMovementSpeed, int fuelType, float engineVolume, String transmission, String body,
                String licenseNumber, String tyreType, int numberOfSeats) {
         super(brand, model, year, country, color, maxMovementSpeed, fuelType);
- refill(fuelType);
+        refill(getFuelType());
         this.body = validateParameters(body);
         this.licenseNumber = validateLicensePlate(licenseNumber);
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
@@ -49,22 +49,25 @@ public class Car extends Transport {
     }
 
     @Override
-    public void refill(int category) {
+    public String refill(int category) {
+        super.setFuelType(category);
+        String fuel = "";
         String fuel1 = "Бензин";
         String fuel2 = "Дизель";
         String fuel3 = "Электричество";
         String fuel4 = "Газ";
         if (category == 1) {
-            System.out.println("Вид топлива для заправки - " + fuel1);
+            fuel = fuel1;
         } else if (category == 2) {
-            System.out.println("Вид топлива для заправки - " + fuel2);
+            fuel = fuel2;
         } else if (category == 3) {
-            System.out.println("Вид топлива для заправки - " + fuel3);
+            fuel = fuel3;
         } else if (category == 4) {
-            System.out.println("Вид топлива для заправки - " + fuel4);
+            fuel = fuel4;
         } else {
-            System.out.println("Вид топлива для данного транспортного средства не определён");
+            fuel = "Вид топлива для данного транспортного средства не определён";
         }
+        return fuel;
     }
 
 //

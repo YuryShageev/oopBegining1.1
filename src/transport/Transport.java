@@ -59,7 +59,7 @@ public abstract class Transport {
     }
 
     public void setFuelType(int fuelType) {
-        refill(fuelType);
+        this.fuelType = fuelType;
     }
 
     public static String validateParameters(String value) {
@@ -94,7 +94,7 @@ public abstract class Transport {
         this.maxMovementSpeed = maxMovementSpeed;
     }
 
-    public abstract void refill(int category);
+    public abstract String refill(int category);
 
     @Override
     public String toString() {
@@ -104,6 +104,6 @@ public abstract class Transport {
                 ", Страна-производитель " + getCountry() +
                 ", Цвет " + getColor() +
                 ", Максимальная скорость передвижения " + getMaxMovementSpeed() + " км/ч " +
-                 ", Использует топливо - " + getFuelType();
+                 ", Использует топливо - " + refill(getFuelType()) + ", ";
     }
 }

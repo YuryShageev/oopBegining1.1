@@ -112,15 +112,21 @@ public class Train extends Transport {
     }
 
     @Override
-    public void refill(int category) {
+    public String refill(int category) {
+        super.setFuelType(category);
+        String fuel = "";
         String fuel1 = "Дизель";
         String fuel2 = "Уголь";
+        String fuel3 = "Электричество";
         if (category == 1) {
-            System.out.println("Вид топлива для заправки - " + fuel1);
+            fuel = fuel1;
         } else if (category == 2) {
-            System.out.println("Вид топлива для заправки - " + fuel2);
+            fuel = fuel2;
+        } else if (category == 3) {
+            fuel = fuel3;
         } else {
-            System.out.println("Вид топлива для данного транспортного средства не определён");
+            fuel = "Вид топлива для данного транспортного средства не определён";
         }
+        return fuel;
     }
 }
