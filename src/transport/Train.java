@@ -109,4 +109,9 @@ public class Train extends Transport {
                 getDepartureStation() + ", Станция прибытия" + getArrivalStation() + ", Стоимость поездки " + getRideCost() + " рублей, " +
                 "Время в пути " + getRideTime();
     }
+
+    @Override
+    public void refill(int category) {
+
+    }
 }

@@ -2,7 +2,7 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Transport {
+public abstract class Transport {
 
     private String brand;
     private String model;
@@ -83,6 +83,8 @@ public class Transport {
         this.color = validateParameters(color);
         this.maxMovementSpeed = maxMovementSpeed;
     }
+
+    public abstract void refill(int category);
 
     @Override
     public String toString() {

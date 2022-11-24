@@ -13,4 +13,9 @@ public class Bus extends Transport {
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public void refill(int category) {
+
+    }
 }

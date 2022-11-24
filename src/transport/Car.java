@@ -48,6 +48,25 @@ public class Car extends Transport {
 
     }
 
+    @Override
+    public void refill(int category) {
+        String fuel1 = "Бензин";
+        String fuel2 = "Дизель";
+        String fuel3 = "Электричество";
+        String fuel4 = "Газ";
+        if (category == 1) {
+            System.out.println("Вид топлива для заправки - " + fuel1);
+        } else if (category == 2) {
+            System.out.println("Вид топлива для заправки - " + fuel2);
+        } else if (category == 3) {
+            System.out.println("Вид топлива для заправки - " + fuel3);
+        } else if (category == 4) {
+            System.out.println("Вид топлива для заправки - " + fuel4);
+        } else {
+            System.out.println("Вид топлива для данного транспортного средства не определён");
+        }
+    }
+
 //
 
 

@@ -20,6 +20,7 @@ public class Main {
 
         Car car = new Car("Lada", "Granta", 2000, "", "", 180, 0, "", "", "",
                 "Летняя", 5);
+        car.refill(1);
         System.out.println(car);
         Car car1 = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германия", " чёрного", 280,
                 3.0f, "Автомат", "Хэчбек", "т829ип123", "Зимняя", 5);
