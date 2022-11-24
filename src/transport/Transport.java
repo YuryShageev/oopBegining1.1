@@ -10,6 +10,7 @@ public abstract class Transport {
     private String country;
     private String color;
     private float maxMovementSpeed;
+    private int fuelType;
 
     public String getBrand() {
         return brand;
@@ -53,6 +54,14 @@ public abstract class Transport {
         this.maxMovementSpeed = validateSpeed(maxMovementSpeed);
     }
 
+    public int getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(int fuelType) {
+        refill(fuelType);
+    }
+
     public static String validateParameters(String value) {
         return value == null || value.isEmpty() || value.isBlank() ? "Информация не указана" : value;
     }
@@ -62,13 +71,14 @@ public abstract class Transport {
     }
 
     public Transport(String brand, String model) {
-        this(brand, model, 0, "Россия", "Белый", 30);
+        this(brand, model, 0, "Россия", "Белый", 30, 1);
     }
 
-    public Transport(String brand, String model, int productionYear, String country, String color, float maxMovementSpeed) {
+    public Transport(String brand, String model, int productionYear, String country, String color, float maxMovementSpeed, int fuelType) {
         this.brand = brand;
         this.model = model;
         this.productionYear = productionYear;
+        refill(fuelType);
 
         if (productionYear < 0) {
             this.productionYear = Math.abs(productionYear);
@@ -93,6 +103,7 @@ public abstract class Transport {
                 ", Год выпуска " + getProductionYear() +
                 ", Страна-производитель " + getCountry() +
                 ", Цвет " + getColor() +
-                ", Максимальная скорость передвижения " + getMaxMovementSpeed() + " км/ч ";
+                ", Максимальная скорость передвижения " + getMaxMovementSpeed() + " км/ч " +
+                 ", Использует топливо - " + getFuelType();
     }
 }

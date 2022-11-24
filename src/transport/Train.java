@@ -9,14 +9,15 @@ public class Train extends Transport {
     private int numberOfTrainCars;
 
 
-    public Train(String brand, String model, int productionYear, String country, String color, float maxMovementSpeed) {
-        super(brand, model, productionYear, country, color, maxMovementSpeed);
+    public Train(String brand, String model, int productionYear, String country, String color, float maxMovementSpeed, int fuelType) {
+        super(brand, model, productionYear, country, color, maxMovementSpeed, fuelType);
     }
 
-    public Train(String brand, String model, int productionYear, String country, String color, float maxMovementSpeed, int numberOfTrainCars,
+    public Train(String brand, String model, int productionYear, String country, String color, float maxMovementSpeed, int fuelType, int numberOfTrainCars,
                  String departureStation, String arrivalStation, float rideCost, float rideTime) {
-        super(brand, model, productionYear, country, color, maxMovementSpeed);
+        super(brand, model, productionYear, country, color, maxMovementSpeed, fuelType);
 
+        refill(fuelType);
         if (numberOfTrainCars < 0) {
             this.numberOfTrainCars = Math.abs(numberOfTrainCars);
         } else if (numberOfTrainCars == 0) {
@@ -112,6 +113,14 @@ public class Train extends Transport {
 
     @Override
     public void refill(int category) {
-
+        String fuel1 = "Дизель";
+        String fuel2 = "Уголь";
+        if (category == 1) {
+            System.out.println("Вид топлива для заправки - " + fuel1);
+        } else if (category == 2) {
+            System.out.println("Вид топлива для заправки - " + fuel2);
+        } else {
+            System.out.println("Вид топлива для данного транспортного средства не определён");
+        }
     }
 }

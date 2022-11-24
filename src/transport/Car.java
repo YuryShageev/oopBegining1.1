@@ -15,14 +15,14 @@ public class Car extends Transport {
     private Insurance insurance;
 
 
-    public Car(String brand, String model, int year, String country, String color, float maxMovementSpeed) {
-        super(brand, model, year, country, color, maxMovementSpeed);
+    public Car(String brand, String model, int year, String country, String color, float maxMovementSpeed, int fuelType) {
+        super(brand, model, year, country, color, maxMovementSpeed, fuelType);
     }
 
-    public Car(String brand, String model, int year, String country, String color, float maxMovementSpeed, float engineVolume, String transmission, String body,
+    public Car(String brand, String model, int year, String country, String color, float maxMovementSpeed, int fuelType, float engineVolume, String transmission, String body,
                String licenseNumber, String tyreType, int numberOfSeats) {
-        super(brand, model, year, country, color, maxMovementSpeed);
-
+        super(brand, model, year, country, color, maxMovementSpeed, fuelType);
+ refill(fuelType);
         this.body = validateParameters(body);
         this.licenseNumber = validateLicensePlate(licenseNumber);
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
