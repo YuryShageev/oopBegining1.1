@@ -3,15 +3,11 @@ package transport;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 
-public class Car {
-    private String brand;
-    private String model;
+public class Car extends Transport {
+
     private float engineVolume;
-    private final String color;
-    private final int productionYear;
-    private String country;
     private String transmission;
-    private final String body;
+    private String body;
     private String licenseNumber;
     private int numberOfSeats;
     private String tyreType;
@@ -19,18 +15,21 @@ public class Car {
     private Insurance insurance;
 
 
+    public Car(String brand, String model, int year, String country, String color, float maxMovementSpeed, int fuelType) {
+        super(brand, model, year, country, color, maxMovementSpeed, fuelType);
+    }
 
-
-    public Car(String brand, String model, int year, String country, String color, float engineVolume, String transmission, String body,
+    public Car(String brand, String model, int year, String country, String color, float maxMovementSpeed, int fuelType, float engineVolume, String transmission, String body,
                String licenseNumber, String tyreType, int numberOfSeats) {
-
+        super(brand, model, year, country, color, maxMovementSpeed, fuelType);
+        refill(getFuelType());
+        this.body = validateParameters(body);
+        this.licenseNumber = validateLicensePlate(licenseNumber);
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
             this.transmission = "Механическая";
         }else {
             this.transmission = transmission;
         }
-        this.body = validateParameters(body);
-        this.licenseNumber = validateLicensePlate(licenseNumber);
         if (tyreType == null || tyreType.isEmpty() || tyreType.isBlank()) {
             System.out.println("Летняя");
         } else {
@@ -41,65 +40,46 @@ public class Car {
         } else {
             this.numberOfSeats = numberOfSeats;
         }
-        if (brand == null) {
-            System.out.println("Default");
-        } else {
-            this.brand = brand;
-        }
-        if (model == null) {
-            System.out.println("Default");
-        } else {
-            this.model = model;
-        }
-        this.productionYear = validateYear(year);
-        this.country = validateCountry(country, "Россия");
-        if (color == null || color.isEmpty() || color.isBlank()) {
-            this.color = "Белого";
-        } else {
-            this.color = color;
-        }
-
         if (engineVolume <= 0) {
             this.engineVolume = 1.5f;
         } else {
             this.engineVolume = engineVolume;
         }
+
+    }
+
+    @Override
+    public String refill(int category) {
+        super.setFuelType(category);
+        String fuel = "";
+        String fuel1 = "Бензин";
+        String fuel2 = "Дизель";
+        String fuel3 = "Электричество";
+        String fuel4 = "Газ";
+        if (category == 1) {
+            fuel = fuel1;
+        } else if (category == 2) {
+            fuel = fuel2;
+        } else if (category == 3) {
+            fuel = fuel3;
+        } else if (category == 4) {
+            fuel = fuel4;
+        } else {
+            fuel = "Вид топлива для данного транспортного средства не определён";
+        }
+        return fuel;
     }
 
 //
 
-    public void introduceCar() {
-        System.out.println("Бренд " + brand);
-        System.out.println("Марка " + model);
-        System.out.println("Объём двигателя - " + engineVolume);
-        System.out.println("Цвет " + color);
-        System.out.println("Год производства " + productionYear);
-        System.out.println("Страна производителя " + country);
-    }
 
     @Override
     public String toString() {
-        return getBrand() + " " + getModel() + ", " + getProductionYear() + " года выпуска, сборка в стране " + getCountry() + ", " + getColor()
-                + " цвета, объем двигателя - " + getEngineVolume() + "л. Трансмиссия - " + getTransmission() + " Тип кузова - " + getBody() + " Гос. Номер - "
+        return  super.toString()+ " объем двигателя - " + getEngineVolume() + "л. Трансмиссия - " + getTransmission() + " Тип кузова - " + getBody() + " Гос. Номер - "
                 + getLicenseNumber() + " Тип ризины - " + getTyreType() + " Количество мест - " + getNumberOfSeats() + " Свойства ключа -" + getKey() +
                 " Страховка: " + getInsurance();
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getCountry() {
-        return country;
-    }
 
     public String getBody() {
         return body;
@@ -116,10 +96,6 @@ public class Car {
 
 
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
 
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
@@ -135,10 +111,7 @@ public class Car {
         }
     }
 
-    public String getColor() {
-        return color;
-    }
-
+//Getters and setters begin
 
     public String getTransmission() {
         return transmission;
@@ -192,6 +165,8 @@ public class Car {
         this.insurance = insurance;
     }
 
+//    Getters and setters over//
+
     //Валидации
     public static String validateParameters(String value) {
         return value == null || value.isEmpty() || value.isBlank() ? "Информация не указана" : value;
@@ -213,6 +188,22 @@ public class Car {
         return (value == null || value.isBlank() || value.isEmpty()) ? substitution : value;
     }
 
+    public Boolean validateBoolean(Boolean value) {
+        return value == null ? false : value;
+    }
+
+    public double validateCost(double value) {
+        return value <= 0 ? 1000 : value;
+    }
+
+    private boolean validateSerialNumber(String number) {
+        if (Pattern.matches("[а-яА-Яa-zA-Z0-9]{9}", number)) {
+            return true;
+        } else {
+            System.out.println("Wrong Number");
+            return false;
+        }
+    }
 
     public class Key {
         private final Boolean remoteStart;
@@ -231,9 +222,7 @@ public class Car {
                     '}';
         }
 
-        public Boolean validateBoolean(Boolean value) {
-            return value == null ? false : value;
-        }
+
     }
 
     public class Insurance {
@@ -247,18 +236,9 @@ public class Car {
             this.number = validateSerialNumber(number) ? number : "Invalid Number";
         }
 
-        public double validateCost(double value) {
-            return value <= 0 ? 1000 : value;
-        }
 
-        private boolean validateSerialNumber(String number) {
-            if (Pattern.matches("[а-яА-Яa-zA-Z0-9]{9}", number)) {
-                return true;
-            } else {
-                System.out.println("Wrong Number");
-                return false;
-            }
-        }
+
+
 
         public LocalDate checkDuration(LocalDate duration) {
             if (LocalDate.now().isAfter(duration)) {
