@@ -17,6 +17,7 @@ public class Main {
 //        car.getProductionYear();
 //        car.setEngineVolume(0);
 //        System.out.println(car);
+        String separator = "================================";
 
         Car car = new Car("Lada", "Granta", 2000, "", "", 180,1, 0, "", "", "",
                 "Летняя", 5);
@@ -39,17 +40,20 @@ public class Main {
         car4.setInsurance(car4Insurance);
         System.out.println(car4);
 
+        separator();
+
         System.out.println();
         Train train1 = new Train("Ласточка", "В-901", 2011, "Россия",
                 "", 301, 1, 11, "Белорусский вокзал",
                 "Минск-Пассажирский", 3500, 0);
         System.out.println(train1);
 
+
         Train train2 = new Train("Ленинград", "D-125", 2019, "Россия",
                 "", 270, 2, 8, "Ленинградский вокзал", "Ленинград-Пассажирский", 1700, 0);
         System.out.println(train2);
 
-        System.out.println();
+        separator();
 
         Bus bus1 = new Bus("Икарус", "Очень старый", 1976, "Россия", "Красный", 86, 2);
         System.out.println(bus1);
@@ -57,5 +61,14 @@ public class Main {
         System.out.println(bus2);
         Bus bus3 = new Bus("МАЗ", "Д-816", 2009, "Беларусь", "Чёрный", 127, 3);
         System.out.println(bus3);
+
+        separator();
+
+
     }
+
+    public static void separator() {
+        System.out.println("===========================");
+    }
+
 }
