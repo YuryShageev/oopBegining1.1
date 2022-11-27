@@ -17,7 +17,7 @@ public class Main {
 //        car.getProductionYear();
 //        car.setEngineVolume(0);
 //        System.out.println(car);
-        String separator = "================================";
+
 
         Car car = new Car("Lada", "Granta", 2000, "", "", 180,1, 0, "", "", "",
                 "Летняя", 5);
